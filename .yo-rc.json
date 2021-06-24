@@ -1,0 +1,38 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.egs.shopping"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "microservice",
+    "baseName": "egs",
+    "packageName": "com.egs.shopping",
+    "packageFolder": "com/egs/shopping",
+    "serverPort": "9123",
+    "authenticationType": "oauth2",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "OThmZDViMzZmY2M4NDBiYmJhYTMxZjcwMWFlMDE1NmQ5NzI3YjQyZjFjYzQ3Mzk4NWE5NDYyOWMyMDlkMmMzMjA2Njk4ODBhYmQ1MzQ3MjgwN2M1MmI5MjVmZDM4NzJkZTUwZjY0YWQ5MzQwM2M2MDQ3NzU5MjU3NThmOGRjY2Q=",
+    "embeddableLaunchScript": false,
+    "creationTimestamp": 1624517256374,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
