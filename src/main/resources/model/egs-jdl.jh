@@ -1,0 +1,44 @@
+entity Customer {
+    email       String unique,
+    firstName   String,
+    lastName    String,
+    role        CustomerRoles,
+    status      CustomerStatus,
+    address     String
+}
+
+entity Category {
+    name        String
+}
+
+entity Product {
+    name        String,
+    price       BigDecimal,
+    available   Boolean
+}
+
+entity Comment {
+    rate    Integer min(1) max(5),
+    text    String  maxlength(10000)
+}
+
+//SUPER ADMIN can only change role of a user
+//ADMIN can add product and category, block unblock the users
+enum CustomerRoles {
+    SUPER_ADMIN, ADMIN, USER
+}
+
+enum CustomerStatus {
+    UNBLOCK, BLOCK
+}
+
+relationship ManyToOne {
+    Product{category} to Category
+    Comment{category} to Category
+    Comment{customer} to Customer
+}
+
+dto all with mapstruct
+service all with serviceImpl
+filter all
+paginate all with pagination

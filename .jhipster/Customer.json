@@ -1,0 +1,45 @@
+{
+  "name": "Customer",
+  "fields": [
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "role",
+      "fieldType": "CustomerRoles",
+      "fieldValues": "SUPER_ADMIN,ADMIN,USER"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "CustomerStatus",
+      "fieldValues": "UNBLOCK,BLOCK"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210624121611",
+  "entityTableName": "customer",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "egs",
+  "applications": "*",
+  "microserviceName": "egs"
+}
