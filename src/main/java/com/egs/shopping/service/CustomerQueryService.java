@@ -94,6 +94,9 @@ public class CustomerQueryService extends QueryService<Customer> {
             if (criteria.getEmail() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getEmail(), Customer_.email));
             }
+            if (criteria.getPassword() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getPassword(), Customer_.password));
+            }
             if (criteria.getFirstName() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getFirstName(), Customer_.firstName));
             }

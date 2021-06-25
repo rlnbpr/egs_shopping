@@ -17,7 +17,10 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="email" type="varchar(255)">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_customer_email" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_customer_email" />
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="true" />
             </column>
             <column name="first_name" type="varchar(255)">
                 <constraints nullable="true" />
@@ -58,6 +61,7 @@
                   tableName="customer">
             <column name="id" type="numeric"/>
             <column name="email" type="string"/>
+            <column name="password" type="string"/>
             <column name="first_name" type="string"/>
             <column name="last_name" type="string"/>
             <column name="role" type="string"/>

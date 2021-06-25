@@ -66,6 +66,8 @@ public class CustomerCriteria implements Serializable, Criteria {
 
     private StringFilter email;
 
+    private StringFilter password;
+
     private StringFilter firstName;
 
     private StringFilter lastName;
@@ -82,6 +84,7 @@ public class CustomerCriteria implements Serializable, Criteria {
     public CustomerCriteria(CustomerCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.email = other.email == null ? null : other.email.copy();
+        this.password = other.password == null ? null : other.password.copy();
         this.firstName = other.firstName == null ? null : other.firstName.copy();
         this.lastName = other.lastName == null ? null : other.lastName.copy();
         this.role = other.role == null ? null : other.role.copy();
@@ -108,6 +111,14 @@ public class CustomerCriteria implements Serializable, Criteria {
 
     public void setEmail(StringFilter email) {
         this.email = email;
+    }
+
+    public StringFilter getPassword() {
+        return password;
+    }
+
+    public void setPassword(StringFilter password) {
+        this.password = password;
     }
 
     public StringFilter getFirstName() {
@@ -163,6 +174,7 @@ public class CustomerCriteria implements Serializable, Criteria {
         return
             Objects.equals(id, that.id) &&
             Objects.equals(email, that.email) &&
+            Objects.equals(password, that.password) &&
             Objects.equals(firstName, that.firstName) &&
             Objects.equals(lastName, that.lastName) &&
             Objects.equals(role, that.role) &&
@@ -175,6 +187,7 @@ public class CustomerCriteria implements Serializable, Criteria {
         return Objects.hash(
         id,
         email,
+        password,
         firstName,
         lastName,
         role,
@@ -189,6 +202,7 @@ public class CustomerCriteria implements Serializable, Criteria {
         return "CustomerCriteria{" +
                 (id != null ? "id=" + id + ", " : "") +
                 (email != null ? "email=" + email + ", " : "") +
+                (password != null ? "password=" + password + ", " : "") +
                 (firstName != null ? "firstName=" + firstName + ", " : "") +
                 (lastName != null ? "lastName=" + lastName + ", " : "") +
                 (role != null ? "role=" + role + ", " : "") +

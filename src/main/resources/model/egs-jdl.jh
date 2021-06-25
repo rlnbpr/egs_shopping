@@ -1,5 +1,6 @@
 entity Customer {
-    email       String unique,
+    email       String unique required,
+    password    String,
     firstName   String,
     lastName    String,
     role        CustomerRoles,

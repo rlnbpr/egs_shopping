@@ -12,8 +12,10 @@ public class CustomerDTO implements Serializable {
     
     private Long id;
 
-    
+    @NotNull
     private String email;
+
+    private String password;
 
     private String firstName;
 
@@ -40,6 +42,14 @@ public class CustomerDTO implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -105,6 +115,7 @@ public class CustomerDTO implements Serializable {
         return "CustomerDTO{" +
             "id=" + getId() +
             ", email='" + getEmail() + "'" +
+            ", password='" + getPassword() + "'" +
             ", firstName='" + getFirstName() + "'" +
             ", lastName='" + getLastName() + "'" +
             ", role='" + getRole() + "'" +

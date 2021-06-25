@@ -1,11 +1,11 @@
-id;email;first_name;last_name;role;status;address
-1;Wilson.Skiles@gmail.com;Lawson;Green;ADMIN;UNBLOCK;SQL
-2;Noble61@gmail.com;Ramon;Armstrong;USER;BLOCK;Hong Kong alarm
-3;Quinn.McGlynn52@gmail.com;Chaim;Gerlach;USER;UNBLOCK;fuchsia Administrator Gorgeous
-4;Rowland9@hotmail.com;Mathilde;Runolfsson;ADMIN;UNBLOCK;Tennessee deposit transmit
-5;Issac78@gmail.com;Aurore;Bartoletti;ADMIN;UNBLOCK;Electronics
-6;Chris_Schaden@hotmail.com;Roderick;Oberbrunner;USER;BLOCK;FTP Rustic
-7;Derick.Reynolds82@gmail.com;Carlee;Lemke;ADMIN;BLOCK;override
-8;Jake88@hotmail.com;Darien;Hilll;USER;BLOCK;Rustic Cotton Table
-9;Emery40@hotmail.com;Treva;Orn;ADMIN;UNBLOCK;backing up Savings Account
-10;Kaleb.Gerhold@hotmail.com;Rosemarie;Gerlach;USER;BLOCK;Web
+id;email;password;first_name;last_name;role;status;address
+1;Wilson.Skiles@gmail.com;heuristic wireless;Dalton;Dickinson;SUPER_ADMIN;UNBLOCK;index
+2;Leopoldo12@gmail.com;Principal sky blue;Winfield;Ruecker;SUPER_ADMIN;UNBLOCK;users
+3;Phoebe92@hotmail.com;online;Velda;DuBuque;SUPER_ADMIN;BLOCK;Awesome Steel Tuna
+4;Ozella.OKeefe81@yahoo.com;Front-line;Raleigh;MacGyver;SUPER_ADMIN;UNBLOCK;Yuan Renminbi Algerian Dinar
+5;Tomas.Russel67@yahoo.com;Investment Account Chair azure;Chris;Schaden;SUPER_ADMIN;UNBLOCK;COM Rhode Island
+6;Bernita_Powlowski@yahoo.com;Rustic white;Mossie;Runolfsdottir;ADMIN;BLOCK;Georgia
+7;Deborah74@hotmail.com;deposit Future;Frida;Shields;USER;BLOCK;Centralized Cotton functionalities
+8;Antwan_Emard@gmail.com;Practical Frozen Shoes transmitting Virtual;Kali;Kertzmann;USER;BLOCK;high-level fuchsia
+9;Susie.Pfannerstill@gmail.com;black;Olen;Brekke;SUPER_ADMIN;BLOCK;SAS Kids Future
+10;Dena_Shields46@yahoo.com;Latvian Lats Human SMTP;Manley;Breitenberg;ADMIN;BLOCK;Shirt quantify
