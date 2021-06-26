@@ -6,6 +6,8 @@ This is a "microservice" application intended to be part of a microservice archi
 
 This application is configured for Service Discovery and Configuration with . On launch, it will refuse to start if it is not able to connect to .
 
+Data model could be found in src/main/resource/model/egs-jdl.jh file
+
 ## Development
 
 To start your application in the dev profile, run:
