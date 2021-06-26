@@ -1,5 +1,7 @@
 package com.egs.shopping.service.dto;
 
+import com.egs.shopping.domain.Product;
+
 import javax.validation.constraints.*;
 import java.io.Serializable;
 
@@ -7,7 +9,7 @@ import java.io.Serializable;
  * A DTO for the {@link com.egs.shopping.domain.Comment} entity.
  */
 public class CommentDTO implements Serializable {
-    
+
     private Long id;
 
     @Min(value = 1)
@@ -18,10 +20,14 @@ public class CommentDTO implements Serializable {
     private String text;
 
 
-    private Long categoryId;
+    private Long productId;
 
     private Long customerId;
-    
+
+    private ProductDTO productDTO;
+
+    private CustomerDTO customerDTO;
+
     public Long getId() {
         return id;
     }
@@ -46,12 +52,12 @@ public class CommentDTO implements Serializable {
         this.text = text;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public Long getCustomerId() {
@@ -60,6 +66,22 @@ public class CommentDTO implements Serializable {
 
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
+    }
+
+    public ProductDTO getProductDTO() {
+        return productDTO;
+    }
+
+    public void setProductDTO(ProductDTO productDTO) {
+        this.productDTO = productDTO;
+    }
+
+    public CustomerDTO getCustomerDTO() {
+        return customerDTO;
+    }
+
+    public void setCustomerDTO(CustomerDTO customerDTO) {
+        this.customerDTO = customerDTO;
     }
 
     @Override
@@ -86,7 +108,7 @@ public class CommentDTO implements Serializable {
             "id=" + getId() +
             ", rate=" + getRate() +
             ", text='" + getText() + "'" +
-            ", categoryId=" + getCategoryId() +
+            ", productId=" + getProductId() +
             ", customerId=" + getCustomerId() +
             "}";
     }

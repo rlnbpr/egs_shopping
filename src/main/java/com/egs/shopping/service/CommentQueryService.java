@@ -97,9 +97,9 @@ public class CommentQueryService extends QueryService<Comment> {
             if (criteria.getText() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getText(), Comment_.text));
             }
-            if (criteria.getCategoryId() != null) {
-                specification = specification.and(buildSpecification(criteria.getCategoryId(),
-                    root -> root.join(Comment_.category, JoinType.LEFT).get(Category_.id)));
+            if (criteria.getProductId() != null) {
+                specification = specification.and(buildSpecification(criteria.getProductId(),
+                    root -> root.join(Comment_.product, JoinType.LEFT).get(Product_.id)));
             }
             if (criteria.getCustomerId() != null) {
                 specification = specification.and(buildSpecification(criteria.getCustomerId(),

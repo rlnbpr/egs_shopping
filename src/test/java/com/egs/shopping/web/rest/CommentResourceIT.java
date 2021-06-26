@@ -3,7 +3,7 @@ package com.egs.shopping.web.rest;
 import com.egs.shopping.EgsApp;
 import com.egs.shopping.config.TestSecurityConfiguration;
 import com.egs.shopping.domain.Comment;
-import com.egs.shopping.domain.Category;
+import com.egs.shopping.domain.Product;
 import com.egs.shopping.domain.Customer;
 import com.egs.shopping.repository.CommentRepository;
 import com.egs.shopping.service.CommentService;
@@ -370,21 +370,21 @@ public class CommentResourceIT {
 
     @Test
     @Transactional
-    public void getAllCommentsByCategoryIsEqualToSomething() throws Exception {
+    public void getAllCommentsByProductIsEqualToSomething() throws Exception {
         // Initialize the database
         commentRepository.saveAndFlush(comment);
-        Category category = CategoryResourceIT.createEntity(em);
-        em.persist(category);
+        Product product = ProductResourceIT.createEntity(em);
+        em.persist(product);
         em.flush();
-        comment.setCategory(category);
+        comment.setProduct(product);
         commentRepository.saveAndFlush(comment);
-        Long categoryId = category.getId();
+        Long productId = product.getId();
 
-        // Get all the commentList where category equals to categoryId
-        defaultCommentShouldBeFound("categoryId.equals=" + categoryId);
+        // Get all the commentList where product equals to productId
+        defaultCommentShouldBeFound("productId.equals=" + productId);
 
-        // Get all the commentList where category equals to categoryId + 1
-        defaultCommentShouldNotBeFound("categoryId.equals=" + (categoryId + 1));
+        // Get all the commentList where product equals to productId + 1
+        defaultCommentShouldNotBeFound("productId.equals=" + (productId + 1));
     }
 
 

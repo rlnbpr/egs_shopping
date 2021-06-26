@@ -22,7 +22,7 @@
             <column name="text" type="varchar(10000)">
                 <constraints nullable="true" />
             </column>
-            <column name="category_id" type="bigint">
+            <column name="product_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="customer_id" type="bigint">

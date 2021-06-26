@@ -18,9 +18,9 @@
   "relationships": [
     {
       "relationshipType": "many-to-one",
-      "otherEntityName": "category",
+      "otherEntityName": "product",
       "otherEntityRelationshipName": "comment",
-      "relationshipName": "category",
+      "relationshipName": "product",
       "otherEntityField": "id"
     },
     {

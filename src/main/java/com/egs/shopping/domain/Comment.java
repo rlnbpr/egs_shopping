@@ -31,7 +31,7 @@ public class Comment implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "comments", allowSetters = true)
-    private Category category;
+    private Product product;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "comments", allowSetters = true)
@@ -72,17 +72,17 @@ public class Comment implements Serializable {
         this.text = text;
     }
 
-    public Category getCategory() {
-        return category;
+    public Product getProduct() {
+        return product;
     }
 
-    public Comment category(Category category) {
-        this.category = category;
+    public Comment product(Product product) {
+        this.product = product;
         return this;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Customer getCustomer() {

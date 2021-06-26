@@ -1,7 +1,14 @@
 package com.egs.shopping.web.rest;
 
 import com.egs.shopping.aspects.AdminRole;
+import com.egs.shopping.domain.Customer;
+import com.egs.shopping.repository.CustomerRepository;
 import com.egs.shopping.service.CommentService;
+import com.egs.shopping.service.CustomerService;
+import com.egs.shopping.service.SecurityService;
+import com.egs.shopping.service.dto.CustomerDTO;
+import com.egs.shopping.service.exception.InvalidAuthorizationException;
+import com.egs.shopping.service.exception.UserNotFoundException;
 import com.egs.shopping.web.rest.errors.BadRequestAlertException;
 import com.egs.shopping.service.dto.CommentDTO;
 import com.egs.shopping.service.dto.CommentCriteria;
@@ -17,10 +24,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -45,9 +55,18 @@ public class CommentResource {
 
     private final CommentQueryService commentQueryService;
 
-    public CommentResource(CommentService commentService, CommentQueryService commentQueryService) {
+    private final SecurityService securityService;
+
+    private final CustomerRepository customerRepository;
+
+    public CommentResource(CommentService commentService,
+                           CommentQueryService commentQueryService,
+                           CustomerRepository customerRepository,
+                           SecurityService securityService) {
         this.commentService = commentService;
         this.commentQueryService = commentQueryService;
+        this.securityService = securityService;
+        this.customerRepository = customerRepository;
     }
 
     /**
@@ -63,6 +82,16 @@ public class CommentResource {
         if (commentDTO.getId() != null) {
             throw new BadRequestAlertException("A new comment cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
+            .getRequestAttributes()).getRequest();
+        String token = request.getHeader("token");
+        if(token == null || token.isEmpty()) {
+            throw new InvalidAuthorizationException();
+        }
+        Customer customer = securityService.parseToken(token);
+        Customer localCustomer = customerRepository.findByEmail(customer.getEmail()).orElseThrow(() ->
+            new UserNotFoundException());
+        commentDTO.setCustomerId(localCustomer.getId());
         CommentDTO result = commentService.save(commentDTO);
         return ResponseEntity.created(new URI("/api/comments/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))

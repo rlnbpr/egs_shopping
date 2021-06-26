@@ -30,7 +30,7 @@ public class CommentCriteria implements Serializable, Criteria {
 
     private StringFilter text;
 
-    private LongFilter categoryId;
+    private LongFilter productId;
 
     private LongFilter customerId;
 
@@ -41,7 +41,7 @@ public class CommentCriteria implements Serializable, Criteria {
         this.id = other.id == null ? null : other.id.copy();
         this.rate = other.rate == null ? null : other.rate.copy();
         this.text = other.text == null ? null : other.text.copy();
-        this.categoryId = other.categoryId == null ? null : other.categoryId.copy();
+        this.productId = other.productId == null ? null : other.productId.copy();
         this.customerId = other.customerId == null ? null : other.customerId.copy();
     }
 
@@ -74,12 +74,12 @@ public class CommentCriteria implements Serializable, Criteria {
         this.text = text;
     }
 
-    public LongFilter getCategoryId() {
-        return categoryId;
+    public LongFilter getProductId() {
+        return productId;
     }
 
-    public void setCategoryId(LongFilter categoryId) {
-        this.categoryId = categoryId;
+    public void setProductId(LongFilter productId) {
+        this.productId = productId;
     }
 
     public LongFilter getCustomerId() {
@@ -104,7 +104,7 @@ public class CommentCriteria implements Serializable, Criteria {
             Objects.equals(id, that.id) &&
             Objects.equals(rate, that.rate) &&
             Objects.equals(text, that.text) &&
-            Objects.equals(categoryId, that.categoryId) &&
+            Objects.equals(productId, that.productId) &&
             Objects.equals(customerId, that.customerId);
     }
 
@@ -114,7 +114,7 @@ public class CommentCriteria implements Serializable, Criteria {
         id,
         rate,
         text,
-        categoryId,
+        productId,
         customerId
         );
     }
@@ -126,7 +126,7 @@ public class CommentCriteria implements Serializable, Criteria {
                 (id != null ? "id=" + id + ", " : "") +
                 (rate != null ? "rate=" + rate + ", " : "") +
                 (text != null ? "text=" + text + ", " : "") +
-                (categoryId != null ? "categoryId=" + categoryId + ", " : "") +
+                (productId != null ? "productId=" + productId + ", " : "") +
                 (customerId != null ? "customerId=" + customerId + ", " : "") +
             "}";
     }

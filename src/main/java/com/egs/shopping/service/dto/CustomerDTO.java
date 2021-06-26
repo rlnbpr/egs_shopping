@@ -4,6 +4,7 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import com.egs.shopping.domain.enumeration.CustomerRoles;
 import com.egs.shopping.domain.enumeration.CustomerStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A DTO for the {@link com.egs.shopping.domain.Customer} entity.
@@ -15,8 +16,10 @@ public class CustomerDTO implements Serializable {
     @NotNull
     private String email;
 
+    @JsonIgnore
     private String password;
 
+    @JsonIgnore
     private String confirmPassword;
 
     private String firstName;
