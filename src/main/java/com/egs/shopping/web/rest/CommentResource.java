@@ -1,5 +1,6 @@
 package com.egs.shopping.web.rest;
 
+import com.egs.shopping.aspects.AdminRole;
 import com.egs.shopping.service.CommentService;
 import com.egs.shopping.web.rest.errors.BadRequestAlertException;
 import com.egs.shopping.service.dto.CommentDTO;
@@ -135,6 +136,7 @@ public class CommentResource {
      * @param id the id of the commentDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
+    @AdminRole
     @DeleteMapping("/comments/{id}")
     public ResponseEntity<Void> deleteComment(@PathVariable Long id) {
         log.debug("REST request to delete Comment : {}", id);

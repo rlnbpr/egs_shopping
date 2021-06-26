@@ -1,5 +1,6 @@
 package com.egs.shopping.web.rest;
 
+import com.egs.shopping.aspects.AdminRole;
 import com.egs.shopping.service.ProductService;
 import com.egs.shopping.web.rest.errors.BadRequestAlertException;
 import com.egs.shopping.service.dto.ProductDTO;
@@ -55,6 +56,7 @@ public class ProductResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new productDTO, or with status {@code 400 (Bad Request)} if the product has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
+    @AdminRole
     @PostMapping("/products")
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) throws URISyntaxException {
         log.debug("REST request to save Product : {}", productDTO);
@@ -76,6 +78,7 @@ public class ProductResource {
      * or with status {@code 500 (Internal Server Error)} if the productDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
+    @AdminRole
     @PutMapping("/products")
     public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO productDTO) throws URISyntaxException {
         log.debug("REST request to update Product : {}", productDTO);
@@ -134,6 +137,7 @@ public class ProductResource {
      * @param id the id of the productDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
+    @AdminRole
     @DeleteMapping("/products/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         log.debug("REST request to delete Product : {}", id);

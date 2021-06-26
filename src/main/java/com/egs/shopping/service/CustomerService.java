@@ -2,6 +2,8 @@ package com.egs.shopping.service;
 
 import com.egs.shopping.service.dto.CustomerDTO;
 
+import jdk.nashorn.api.scripting.JSObject;
+import org.json.JSONObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -43,4 +45,10 @@ public interface CustomerService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    JSONObject register(CustomerDTO customerDTO);
+
+    JSONObject login(CustomerDTO customerDTO);
+
+    JSONObject changeCustomerAccessibility(CustomerDTO customerDTO);
 }

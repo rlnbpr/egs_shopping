@@ -1,5 +1,6 @@
 package com.egs.shopping.web.rest;
 
+import com.egs.shopping.aspects.AdminRole;
 import com.egs.shopping.service.CategoryService;
 import com.egs.shopping.web.rest.errors.BadRequestAlertException;
 import com.egs.shopping.service.dto.CategoryDTO;
@@ -55,6 +56,7 @@ public class CategoryResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new categoryDTO, or with status {@code 400 (Bad Request)} if the category has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
+    @AdminRole
     @PostMapping("/categories")
     public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) throws URISyntaxException {
         log.debug("REST request to save Category : {}", categoryDTO);
@@ -76,6 +78,7 @@ public class CategoryResource {
      * or with status {@code 500 (Internal Server Error)} if the categoryDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
+    @AdminRole
     @PutMapping("/categories")
     public ResponseEntity<CategoryDTO> updateCategory(@RequestBody CategoryDTO categoryDTO) throws URISyntaxException {
         log.debug("REST request to update Category : {}", categoryDTO);
@@ -104,18 +107,6 @@ public class CategoryResource {
     }
 
     /**
-     * {@code GET  /categories/count} : count all the categories.
-     *
-     * @param criteria the criteria which the requested entities should match.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
-     */
-    @GetMapping("/categories/count")
-    public ResponseEntity<Long> countCategories(CategoryCriteria criteria) {
-        log.debug("REST request to count Categories by criteria: {}", criteria);
-        return ResponseEntity.ok().body(categoryQueryService.countByCriteria(criteria));
-    }
-
-    /**
      * {@code GET  /categories/:id} : get the "id" category.
      *
      * @param id the id of the categoryDTO to retrieve.
@@ -134,6 +125,7 @@ public class CategoryResource {
      * @param id the id of the categoryDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
+    @AdminRole
     @DeleteMapping("/categories/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         log.debug("REST request to delete Category : {}", id);

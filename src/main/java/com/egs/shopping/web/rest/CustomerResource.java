@@ -1,5 +1,7 @@
 package com.egs.shopping.web.rest;
 
+import com.egs.shopping.domain.enumeration.CustomerRoles;
+import com.egs.shopping.domain.enumeration.CustomerStatus;
 import com.egs.shopping.service.CustomerService;
 import com.egs.shopping.web.rest.errors.BadRequestAlertException;
 import com.egs.shopping.service.dto.CustomerDTO;
@@ -56,16 +58,33 @@ public class CustomerResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new customerDTO, or with status {@code 400 (Bad Request)} if the customer has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/customers")
-    public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody CustomerDTO customerDTO) throws URISyntaxException {
-        log.debug("REST request to save Customer : {}", customerDTO);
+    @PostMapping("/customers/register")
+    public ResponseEntity<String> createCustomer(@Valid @RequestBody CustomerDTO customerDTO) throws URISyntaxException {
+        log.debug("REST request to register Customer : {}", customerDTO);
         if (customerDTO.getId() != null) {
             throw new BadRequestAlertException("A new customer cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        CustomerDTO result = customerService.save(customerDTO);
-        return ResponseEntity.created(new URI("/api/customers/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
-            .body(result);
+        return ResponseEntity.created(new URI("/api/customers/register"))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, ""))
+            .body(customerService.register(customerDTO).toString(2));
+    }
+
+    @PostMapping("/customers/login")
+    public ResponseEntity<String> loginCustomer(@Valid @RequestBody CustomerDTO customerDTO) throws URISyntaxException {
+        log.debug("REST request to login Customer : {}", customerDTO);
+
+        return ResponseEntity.created(new URI("/api/customers/login"))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, ""))
+            .body(customerService.login(customerDTO).toString(2));
+    }
+
+    @PostMapping("/customers/change-customer-accessibility")
+    public ResponseEntity<String> changeCustomerAccessibility(@RequestBody CustomerDTO customerDTO) throws URISyntaxException {
+        log.debug("REST request to login Customer : {}", customerDTO);
+
+        return ResponseEntity.created(new URI("/api/customers/login"))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, ""))
+            .body(customerService.changeCustomerAccessibility(customerDTO).toString(2));
     }
 
     /**

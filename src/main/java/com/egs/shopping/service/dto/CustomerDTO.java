@@ -9,13 +9,15 @@ import com.egs.shopping.domain.enumeration.CustomerStatus;
  * A DTO for the {@link com.egs.shopping.domain.Customer} entity.
  */
 public class CustomerDTO implements Serializable {
-    
+
     private Long id;
 
     @NotNull
     private String email;
 
     private String password;
+
+    private String confirmPassword;
 
     private String firstName;
 
@@ -27,7 +29,8 @@ public class CustomerDTO implements Serializable {
 
     private String address;
 
-    
+    private String token;
+
     public Long getId() {
         return id;
     }
@@ -90,6 +93,22 @@ public class CustomerDTO implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     @Override
